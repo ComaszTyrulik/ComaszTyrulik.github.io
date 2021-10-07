@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+	<!--- basic page needs
+   ================================================== -->
+	<meta charset="utf-8">
+	<title>Tomasz Cyrulik - Node Based Editor</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- mobile specific metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- CSS
+   ================================================== -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/vendor.css">
+	<link rel="stylesheet" href="css/custom.css">
+
+	<!-- script
+   ================================================== -->
+	<script src="js/modernizr.js"></script>
+	<!-- <script src="js/pace.min.js"></script> -->
+
+	<!-- favicons
+	================================================== -->
+	<link rel="icon" type="image/png" href="favicon.png">
+
+</head>
+
+<body id="top">
+	<header>
+		<div class="row">
+			<div class="top-bar">
+				<a class="menu-toggle" href="#"><span>Menu</span></a>
+
+				<div class="logo">
+					<a href="index.html">KARDS</a>
+				</div>
+
+				<nav id="main-nav-wrap">
+					<ul class="main-navigation">
+						<li><a href="index.html#intro" title="">Home</a></li>
+						<li><a href="index.html#about" title="">About</a></li>
+						<li><a href="index.html#resume" title="">Resume</a></li>
+						<li><a href="index.html#portfolio" title="">Portfolio</a></li>
+						<li><a href="index.html#services" title="">Services</a></li>
+						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
+						<li><a href="styles.html" title="">Style Demo</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<!-- Content
+   ================================================== -->
+	<section id="project">
+		<div class="row section-intro">
+			<div class="col-twelve">
+
+				<h1>Node Based Editor</h1>
+				<h3 style="color: #888888;">DECEMBER 2020 - PRESENT</h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-six tab-full"><p><img class="modal-image" src="images/portfolio/nbe/nodes_view.png" alt="EDITOR'S NODES VIEW"></p></div>
+			<div class="col-six tab-full">
+				<h3>Project Description</h3>
+
+				<p><a href="#"><img width="120" height="120" class="pull-left" alt="sample-image" src="images/nodes.png"></a>
+					In November 2020, me and my team finished working on a turn based strategy game prototype, and we
+					wanted to test our other ideas.
+					We started working on a graphic novel game. We wanted to have a tool that would allow us creating
+					content for our game, but also something that would allow players to create their own stories and
+					alter existing ones.
+					That's how we started working on the node based editor - our game's Story Editor.
+					In cooperation with other members, I created a list of requirements which then turned into a design
+					document containing all aspects of the editor.
+				</p>
+
+				<p>
+					The editor's data is based on assets. Each element of the story, such as character or a dialog option,
+					is an asset of its own type.
+					All assets are stored on the drive in the `YAML` format providing relatively easy sharing via
+					version control system, such as Git.
+					Additionally, the editor allows creating multiple translations for texts and images.
+					Assets reference each other by Ids, and actual version of the translatable asset can be loaded based on the selected language.
+
+					The core of the editor is the simple nodes system which allows combining all elements together to create a story for the game.
+				</p>
+				<p>
+					Story Editor is created with <strong>C++17</strong> and <a
+						href="https://github.com/ocornut/imgui">Dear ImGui</a> for UI.
+					I also use other libraries such as <a href="https://github.com/Cyan4973/xxHash">xxHash</a> or <a
+						href="https://github.com/mariusbancila/stduuid">stduuid</a>.
+					I am also using <a href="https://github.com/google/googletest">GoogleTest</a> as testing framework.
+				</p>
+
+				<h3>Architecture</h3>
+				<p>
+					The editor is split into three layers: <strong>Data</strong>, <strong>Bridge</strong> and <strong>UI</strong>
+				</p>
+				<p>
+					Data layer is the 'Brain' of the editor. It contains the assets database which stores all the
+					assets on disk, and contains methods to convert <code>YAML</code> into <code>C++</code> objects.
+					I wanted to bo able to replace the <strong>Data</strong> layer in the future (for example, for a server-based
+					solution), so it only exposes the <code>C</code> API for exchanging data.
+					Creating the <code>C</code> API was a difficult task, because that was my first time, and there is a lot to
+					keep in mind when dealing with <code>DLL-boundaries</code>.
+					I implemented the API by using entry functions which initialize pointers to interfaces, and then
+					exchanging data via those interfaces.
+					You can find an example in the code samples <a>below</a>;
+				</p>
+				<p>
+					The Bridge layer is a connector between Data and UI layers. It converts <code>C</code> and <code>C++</code> objects
+					back and forth, giving the UI layer possibility to deal only with <code>C++</code> objects.
+					And last, but not least, the UI layer is responsible for displaying the UI. It takes data via
+					Bridge layer and display it using the <strong>Dear ImGui</strong> library.
+					Below, you can find an image showing the general architecture. Click on it to enlarge the image.
+				</p>
+				<p><img class="modal-image" id="myImage" src="images/EditorArchitectureExample.png" alt="EDITOR'S ARCHITECTURE"></p>
+
+				<h3>Code Examples</h3>
+				<p>
+					Below, you can find a few example of code from the project.
+					The entire source code is not currently publicly availabe, so I am including only a couple of examples.
+
+					<!-- Api.h and Api.cpp -->
+					<div class="full-width accordion">C API functions</div>
+					<div class="panel">
+						<p>
+							Here, you can find an example of C API functions used to initialize the Data Layer API.
+							Their declarations are placed inside the <code>Api.h</code> header, used by the API user.
+							The actual implementation of these functions is placed inside the <code>Api.cpp</code> file.
+						</p>
+						<p>
+							Once initialized,  the <code>IApi</code> interface provides access to other interfaces, such as <code>IProjectProvider</code> and <code>IProject</code>.
+							Those interfaces are used to create/open project, and to operate on project's data (assets, nodes, etc.).
+						</p>
+						<p>
+							Functions Declarations
+							<script src="https://gist.github.com/ComaszTyrulik/9b95a581a2017d8633aa4627de66eb17.js"></script>
+						</p>
+						<p>
+							Functions Definitions
+							<script src="https://gist.github.com/ComaszTyrulik/eea75a6981a95c5ec970129f35da9e23.js"></script>
+						</p>
+						<p>
+							IApi interface implementation used by <code>InitializeApi()</code> function
+							<script src="https://gist.github.com/ComaszTyrulik/a7c7143da8a02adcbc27f61e38c5c4b3.js"></script>
+						</p>
+					</div>
+				</p>
+				<p>
+					<div class="full-width accordion">Nodes Renderers</div>
+					<div class="panel">
+						The <code>NodesViewWindowController</code> class handles logic of the Nodes View.
+						<script src="https://gist.github.com/ComaszTyrulik/f222bc78151fa5850738fbe42a5dc763.js"></script>
+						<script src="https://gist.github.com/ComaszTyrulik/70d6911afe5a718c638b47767dc76755.js"></script>
+					</div>
+				</p>
+			</div>
+		</div> <!-- /row -->
+	</section>
+
+	<div id="images-modal" class="modal">
+		<span class="close">&times;</span>
+		<img class="modal-content" id="img01">
+		<div id="caption"></div>
+	</div>
+
+	<!-- contact
+   ================================================== -->
+	<section id="contact">
+
+		<div class="row section-intro">
+			<div class="col-twelve">
+
+				<h5>Contact</h5>
+				<h1>I'd Love To Hear From You.</h1>
+
+				<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia
+					nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+
+			</div>
+		</div> <!-- /section-intro -->
+
+		<div class="row contact-form">
+
+			<div class="col-twelve">
+
+				<!-- form -->
+				<form name="contactForm" id="contactForm" method="post" action="">
+					<fieldset>
+
+						<div class="form-field">
+							<input name="contactName" type="text" id="contactName" placeholder="Name" value=""
+								minlength="2" required="">
+						</div>
+						<div class="form-field">
+							<input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value=""
+								required="">
+						</div>
+						<div class="form-field">
+							<input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
+						</div>
+						<div class="form-field">
+							<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10"
+								cols="50" required=""></textarea>
+						</div>
+						<div class="form-field">
+							<button class="submitform">Submit</button>
+							<div id="submit-loader">
+								<div class="text-loader">Sending...</div>
+								<div class="s-loader">
+									<div class="bounce1"></div>
+									<div class="bounce2"></div>
+									<div class="bounce3"></div>
+								</div>
+							</div>
+						</div>
+
+					</fieldset>
+				</form> <!-- Form End -->
+
+				<!-- contact-warning -->
+				<div id="message-warning"></div>
+				<!-- contact-success -->
+				<div id="message-success">
+					<i class="fa fa-check"></i>Your message was sent, thank you!<br>
+				</div>
+
+			</div> <!-- /col-twelve -->
+
+		</div> <!-- /contact-form -->
+
+		<div class="row contact-info">
+
+			<div class="col-four tab-full">
+
+				<div class="icon">
+					<i class="icon-pin"></i>
+				</div>
+
+				<h5>Where to find me</h5>
+
+				<p>
+					1600 Amphitheatre Parkway<br>
+					Mountain View, CA<br>
+					94043 US
+				</p>
+
+			</div>
+
+			<div class="col-four tab-full collapse">
+
+				<div class="icon">
+					<i class="icon-mail"></i>
+				</div>
+
+				<h5>Email Me At</h5>
+
+				<p>someone@kardswebsite.com<br>
+					info@kardswebsite.com
+				</p>
+
+			</div>
+
+			<div class="col-four tab-full">
+
+				<div class="icon">
+					<i class="icon-phone"></i>
+				</div>
+
+				<h5>Call Me At</h5>
+
+				<p>Phone: (+63) 555 1212<br>
+					Mobile: (+63) 555 0100<br>
+					Fax: (+63) 555 0101
+				</p>
+
+			</div>
+
+		</div> <!-- /contact-info -->
+
+	</section> <!-- /contact -->
+
+
+	<!-- footer
+   ================================================== -->
+
+	<footer>
+		<div class="row">
+
+			<div class="col-six tab-full pull-right social">
+
+				<ul class="footer-social">
+					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fa fa-behance"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+					<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+				</ul>
+
+			</div>
+
+			<div class="col-six tab-full">
+				<div class="copyright">
+					<span>© Copyright Kards 2016.</span>
+					<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
+				</div>
+			</div>
+
+			<div id="go-top">
+				<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+			</div>
+
+		</div> <!-- /row -->
+	</footer>
+
+	<div id="preloader">
+		<div id="loader"></div>
+	</div>
+
+	<!-- Java Script
+   ================================================== -->
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/modal.js"></script>
+	<script src="js/wheelzoom-master/wheelzoom.js"></script>
+	<script src="js/accordion.js"></script>
+	<script>
+		wheelzoom(document.querySelectorAll("#img01"));
+	</script>
+</body>
+
+</html>
