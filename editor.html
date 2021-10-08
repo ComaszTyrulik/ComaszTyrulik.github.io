@@ -28,7 +28,6 @@
 	<!-- script
    ================================================== -->
 	<script src="js/modernizr.js"></script>
-	<!-- <script src="js/pace.min.js"></script> -->
 
 	<!-- favicons
 	================================================== -->
@@ -37,24 +36,22 @@
 </head>
 
 <body id="top">
+	<!-- header 
+   ================================================== -->
 	<header>
 		<div class="row">
 			<div class="top-bar">
 				<a class="menu-toggle" href="#"><span>Menu</span></a>
 
 				<div class="logo">
-					<a href="index.html">KARDS</a>
+					<a href="index.html" class="contact-link">TC</a>
 				</div>
-
 				<nav id="main-nav-wrap">
 					<ul class="main-navigation">
 						<li><a href="index.html#intro" title="">Home</a></li>
 						<li><a href="index.html#about" title="">About</a></li>
-						<li><a href="index.html#resume" title="">Resume</a></li>
-						<li><a href="index.html#portfolio" title="">Portfolio</a></li>
-						<li><a href="index.html#services" title="">Services</a></li>
+						<li><a href="index.html#resume" title="">Projects</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
-						<li><a href="styles.html" title="">Style Demo</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -77,15 +74,16 @@
 			<div class="col-six tab-full">
 				<h3>Project Description</h3>
 
-				<p><a href="#"><img width="120" height="120" class="pull-left" alt="sample-image" src="images/nodes.png"></a>
+				<p><a href="https://creativemarket.com/Becris"><img width="120" height="120" class="pull-left" alt="sample-image" src="images/nodes.png"></a>
 					In November 2020, me and my team finished working on a turn based strategy game prototype, and we
 					wanted to test our other ideas.
 					We started working on a graphic novel game. We wanted to have a tool that would allow us creating
 					content for our game, but also something that would allow players to create their own stories and
 					alter existing ones.
 					That's how we started working on the node based editor - our game's Story Editor.
-					In cooperation with other members, I created a list of requirements which then turned into a design
-					document containing all aspects of the editor.
+					In cooperation with game designer, I created a list of requirements which then turned into a design
+					document containing all aspects of the editor. I had been developing the tool as a single programmer until June, when two other developers joined the team, and helped me with the development.
+					Project is still in progress, so not all of the features are implemented yet.
 				</p>
 
 				<p>
@@ -101,9 +99,8 @@
 				<p>
 					Story Editor is created with <strong>C++17</strong> and <a
 						href="https://github.com/ocornut/imgui">Dear ImGui</a> for UI.
-					I also use other libraries such as <a href="https://github.com/Cyan4973/xxHash">xxHash</a> or <a
-						href="https://github.com/mariusbancila/stduuid">stduuid</a>.
-					I am also using <a href="https://github.com/google/googletest">GoogleTest</a> as testing framework.
+					I also use other libraries such as <a href="https://github.com/Cyan4973/xxHash">xxHash</a>, <a href="https://github.com/mariusbancila/stduuid">stduuid</a> or <a href="https://github.com/jbeder/yaml-cpp">yaml-cpp</a>.
+					I am also using <a href="https://github.com/google/googletest">GoogleTest</a> as a testing framework.
 				</p>
 
 				<h3>Architecture</h3>
@@ -136,7 +133,7 @@
 					The entire source code is not currently publicly availabe, so I am including only a couple of examples.
 
 					<!-- Api.h and Api.cpp -->
-					<div class="full-width accordion">C API functions</div>
+					<div class="full-width accordion">C API Functions</div>
 					<div class="panel">
 						<p>
 							Here, you can find an example of C API functions used to initialize the Data Layer API.
@@ -156,17 +153,31 @@
 							<script src="https://gist.github.com/ComaszTyrulik/eea75a6981a95c5ec970129f35da9e23.js"></script>
 						</p>
 						<p>
-							IApi interface implementation used by <code>InitializeApi()</code> function
+							<code>IApi</code> interface implementation used by <code>InitializeApi()</code> function
 							<script src="https://gist.github.com/ComaszTyrulik/a7c7143da8a02adcbc27f61e38c5c4b3.js"></script>
 						</p>
 					</div>
 				</p>
 				<p>
-					<div class="full-width accordion">Nodes Renderers</div>
+					<div class="full-width accordion">Nodes Rendering</div>
 					<div class="panel">
-						The <code>NodesViewWindowController</code> class handles logic of the Nodes View.
-						<script src="https://gist.github.com/ComaszTyrulik/f222bc78151fa5850738fbe42a5dc763.js"></script>
-						<script src="https://gist.github.com/ComaszTyrulik/70d6911afe5a718c638b47767dc76755.js"></script>
+						<p>
+							This section contains the main components responsible for rendering nodes.<br>
+							
+							The rendering process starts with <code>NodesViewWindowController</code> class responsible for handling logic of the Nodes View.
+							It updates camera, handles user input and uses renderers to render grid and nodes.
+							<script src="https://gist.github.com/ComaszTyrulik/f222bc78151fa5850738fbe42a5dc763.js"></script>
+						</p>
+						<p>
+							Next, the <code>NodesRenderer</code> class, implementing the <code>INodesRenderer</code> interface, handles rendering of nodes and their transitions.
+							It uses provided camera and <code>EditorNodeAssets</code> to render only visible nodes. It uses the <code>INodeRenderer</code> interface to issue draw calls for each node and its transitions.
+							Returns list of nodes which are actually visible on the screen, so that the <code>NodesViewWindowController</code> can handle events of only the visible nodes.
+							<script src="https://gist.github.com/ComaszTyrulik/70d6911afe5a718c638b47767dc76755.js"></script>
+						</p>
+						<p>
+							And last but not least, there is the <code>ImGuiNodeRenderer</code> class, implementing the <code>INodeRenderer</code> interface which uses <code>DearImGui</code> to render single node onto the screen.
+							<script src="https://gist.github.com/ComaszTyrulik/45f3c93ca51f29327f95a177c0733cdc.js"></script>
+						</p>
 					</div>
 				</p>
 			</div>
@@ -185,24 +196,18 @@
 
 		<div class="row section-intro">
 			<div class="col-twelve">
-
 				<h5>Contact</h5>
 				<h1>I'd Love To Hear From You.</h1>
 
-				<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia
-					nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
-
+				<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form below.</p>
 			</div>
 		</div> <!-- /section-intro -->
 
 		<div class="row contact-form">
-
 			<div class="col-twelve">
-
 				<!-- form -->
 				<form name="contactForm" id="contactForm" method="post" action="">
 					<fieldset>
-
 						<div class="form-field">
 							<input name="contactName" type="text" id="contactName" placeholder="Name" value=""
 								minlength="2" required="">
@@ -245,79 +250,38 @@
 		</div> <!-- /contact-form -->
 
 		<div class="row contact-info">
-
-			<div class="col-four tab-full">
-
+			<div class="col-half tab-full">
 				<div class="icon">
 					<i class="icon-pin"></i>
 				</div>
 
-				<h5>Where to find me</h5>
-
+				<h5>Find Me On</h5>
 				<p>
-					1600 Amphitheatre Parkway<br>
-					Mountain View, CA<br>
-					94043 US
+					<i class="fa fa-github" style="color: #FFFF;"></i> <a href="https://github.com/ComaszTyrulik" class="contact-link">Github</a><br>
+					<i class="fa fa-linkedin" style="color: #FFFF;"></i> <a href="https://www.linkedin.com/in/tomasz-cyrulik/" class="contact-link">LinkedIn</a>
 				</p>
-
 			</div>
 
-			<div class="col-four tab-full collapse">
-
+			<div class="col-half tab-full">
 				<div class="icon">
 					<i class="icon-mail"></i>
 				</div>
 
 				<h5>Email Me At</h5>
-
-				<p>someone@kardswebsite.com<br>
-					info@kardswebsite.com
-				</p>
-
+				<p><a href="mailto:tomaszcyrulikdevelopment@gmail.com" class="contact-link">tomaszcyrulikdevelopment@gmail.com</a></p>
 			</div>
-
-			<div class="col-four tab-full">
-
-				<div class="icon">
-					<i class="icon-phone"></i>
-				</div>
-
-				<h5>Call Me At</h5>
-
-				<p>Phone: (+63) 555 1212<br>
-					Mobile: (+63) 555 0100<br>
-					Fax: (+63) 555 0101
-				</p>
-
-			</div>
-
 		</div> <!-- /contact-info -->
-
 	</section> <!-- /contact -->
-
 
 	<!-- footer
    ================================================== -->
-
 	<footer>
 		<div class="row">
-
-			<div class="col-six tab-full pull-right social">
-
-				<ul class="footer-social">
-					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="#"><i class="fa fa-behance"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-					<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-				</ul>
-
-			</div>
-
 			<div class="col-six tab-full">
 				<div class="copyright">
-					<span>© Copyright Kards 2016.</span>
+					<span>© Copyright Tomasz Cyrulik 2021</span>
 					<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
+					<span>Icons made by <a href="https://creativemarket.com/Becris" title="Becris">Becris</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span>
 				</div>
 			</div>
 

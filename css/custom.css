@@ -100,7 +100,7 @@
 
 .accordion {
   background-color: #ffff;
-  font-family: "lora-regular", serif;
+  font-family: "poppins-semibold", sans-serif;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -142,4 +142,17 @@
   .panel {
     width: 100%;
   }
+}
+
+.contact-link, .contact-link:visited {
+	color: #FFFF;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.contact-link:hover, .contact-link:focus, .contact-link:active {
+	color: #FF0077;
+	outline: 0;
 }
