@@ -49,8 +49,8 @@
 				<nav id="main-nav-wrap">
 					<ul class="main-navigation">
 						<li><a href="index.html#intro" title="">Home</a></li>
-						<li><a href="index.html#about" title="">About</a></li>
-						<li><a href="index.html#resume" title="">Projects</a></li>
+						<li><a class="smoothscroll" href="index.html#about" title="">About</a></li>
+						<li><a class="smoothscroll" href="index.html#resume" title="">Projects</a></li>
 						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
 					</ul>
 				</nav>
@@ -108,11 +108,11 @@
 					<img src="images/profile_picture2.jpg" alt="Profile Picture">
 
 					<p class="lead">
-						I am a self tought programmer passionate about game technologies. After graduating the
+						I am a self-taught programmer passionate about game technologies. After graduating the
 						Vocational Technical School of Communication in Poznan, Poland, I worked as a PHP developer for
 						3 years, working on payments APIs and marketing tools.
 						In the meantime I was exploring C++ and game engines programming secrets.
-						In 2019, I became part of a small team of games passionates, quit my job, and started working on
+						In 2019, I became part of a small team of games enthusiasts, quit my job, and started working on
 						my personal projects.
 						Now, I wish to join the team of professionals to make my passion my job.
 					</p>
@@ -155,14 +155,8 @@
 					<li>
 						<strong><a href="https://docs.microsoft.com/en-us/windows/win32/direct3d11/atoc-dx-graphics-direct3d-11">DirectX 11</a></strong>
 					</li>
-					<li>
-						<strong><a href="https://trello.com/">Trello</a></strong>
-					</li>
-					<li>
-						<strong><a href="https://www.atlassian.com/software/jira">JIRA</a></strong>
-					</li>
 				</ul> <!-- /skill-bars -->
-				<p>Other than that, I also have some experience working with: CMake, Linux, Docker, JavaScript, SDL2, GLFW, Windows API, Conan Package Manager, Vulkan, MySql</p>
+				<p>Other than that, I also have some experience working with: CMake, Linux, Docker, JavaScript, SDL2, GLFW, Windows API, Conan Package Manager, Vulkan, MySql, Trello, JIRA</p>
 			</div>
 
 		</div>
@@ -187,19 +181,10 @@
 				<h5>Projects</h5>
 				<h1>Personal projects I have worked on</h1>
 
-				<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia
-					nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
-
 			</div>
 		</div> <!-- /section-intro-->
 
 		<div class="row resume-timeline">
-
-			<div class="col-twelve resume-header">
-
-				<h2>Work Experience</h2>
-
-			</div> <!-- /resume-header -->
 
 			<div class="col-twelve">
 
@@ -212,7 +197,7 @@
 						</div>
 
 						<div class="timeline-header">
-							<h3><a href="storyeditor.html">NODE BASED EDITOR</a></h3>
+							<h3><a href="editor.html">NODE BASED EDITOR</a></h3>
 							<p>DECEMBER 2020 - PRESENT</p>
 						</div>
 
@@ -232,14 +217,13 @@
 							<i class="fa fa-briefcase"></i>
 						</div>
 						<div class="timeline-header">
-							<h3><a href="#">TURN-BASED STRATEGY PROTOTYPE</a></h3>
+							<h3><a href="prototype.html">TURN-BASED STRATEGY PROTOTYPE</a></h3>
 							<p>APRIL 2020 - NOVEMBER 2020</p>
 						</div>
 						<div class="timeline-content">
 							<h4>Gameplay Programmer - Unity 3D</h4>
 							<p>
-								Desktop application serving as a tool for creating content for graphic novel game,
-								written in C++17 and Dear ImGui.
+								Turn-based game prototype created using Unity Game Engine.<br>
 								<a href="prototype.html">Find out more...</a>
 							</p>
 						</div>
@@ -250,15 +234,14 @@
 							<i class="fa fa-briefcase"></i>
 						</div>
 						<div class="timeline-header">
-							<h3><a href="#">GAME ENGINE ('BeastEngine')</a></h3>
+							<h3><a href="beastengine.html">BeastEngineGraphics and BeastEngine</a></h3>
 							<p>AUGUST 2016 - PRESENT</p>
 						</div>
 						<div class="timeline-content">
 							<h4>Engine and Graphics Programmer - C++14/17 | OpenGL | D3D11 | Vulkan</h4>
 							<p>
-								Desktop application serving as a tool for creating content for graphic novel game,
-								written in C++17 and Dear ImGui.
-								<a href="storyeditor.html">Find out more...</a>
+								2D rendering engine written in C++14 and OpenGL ('BeastEngineGraphics') and 2D Action-RPG game engine written in C++17 ('BeastEngine').
+								<a href="beastengine.html">Find out more...</a>
 							</p>
 						</div>
 					</div>
@@ -277,8 +260,7 @@
 				<h5>Contact</h5>
 				<h1>I'd Love To Hear From You.</h1>
 
-				<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form
-					below.</p>
+				<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form below.</p>
 			</div>
 		</div> <!-- /section-intro -->
 
@@ -288,19 +270,16 @@
 				<form name="contactForm" id="contactForm" method="post" action="">
 					<fieldset>
 						<div class="form-field">
-							<input name="contactName" type="text" id="contactName" placeholder="Name" value=""
-								minlength="2" required="">
+							<input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
 						</div>
 						<div class="form-field">
-							<input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value=""
-								required="">
+							<input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="">
 						</div>
 						<div class="form-field">
 							<input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
 						</div>
 						<div class="form-field">
-							<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10"
-								cols="50" required=""></textarea>
+							<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
 						</div>
 						<div class="form-field">
 							<button class="submitform">Submit</button>
@@ -349,8 +328,7 @@
 				</div>
 
 				<h5>Email Me At</h5>
-				<p><a href="mailto:tomaszcyrulikdevelopment@gmail.com"
-						class="contact-link">tomaszcyrulikdevelopment@gmail.com</a></p>
+				<p><a href="mailto:tomaszcyrulikdevelopment@gmail.com" class="contact-link">tomaszcyrulikdevelopment@gmail.com</a></p>
 			</div>
 		</div> <!-- /contact-info -->
 	</section> <!-- /contact -->
@@ -363,8 +341,6 @@
 				<div class="copyright">
 					<span>© Copyright Tomasz Cyrulik 2021</span>
 					<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
-					<span>Icons made by <a href="https://creativemarket.com/Becris" title="Becris">Becris</a> from <a
-							href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span>
 				</div>
 			</div>
 
