@@ -25,4 +25,12 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
-} 
+}
+
+document.onkeydown = function(e) {
+  if (e.key == "ArrowRight") {
+    plusSlides(1);
+  } else if (e.key == "ArrowLeft") {
+    plusSlides(-1);
+  }
+}

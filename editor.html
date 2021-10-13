@@ -24,6 +24,7 @@
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/vendor.css">
 	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- script
    ================================================== -->
@@ -75,15 +76,12 @@
 				<h3>Project Description</h3>
 
 				<p><a href="https://creativemarket.com/Becris"><img width="120" height="120" class="pull-left" alt="sample-image" src="images/nodes.png"></a>
-					In November 2020, me and my team finished working on a turn based strategy game prototype, and we
-					wanted to test our other ideas.
+					In November 2020, my team and I finished working on a turn based strategy game prototype, and we wanted to test our other ideas.
 					We started working on a graphic novel game. We wanted to have a tool that would allow us creating
-					content for our game, but also something that would allow players to create their own stories and
-					alter existing ones.
+					content for our game, but also something that would allow players to create their own stories and alter existing ones.
 					That's how we started working on the node based editor - our game's Story Editor.
 					In cooperation with game designer, I created a list of requirements which then turned into a design
-					document containing all aspects of the editor. I had been developing the tool as a single programmer until June, when two other developers joined the team, and helped me with the development.
-					Project is still in progress, so not all of the features are implemented yet.
+					document containing all aspects of the editor. The project is still in progress, so not all of the features are implemented yet.
 				</p>
 
 				<p>
@@ -92,7 +90,7 @@
 					All assets are stored on the drive in the `YAML` format providing relatively easy sharing via
 					version control system, such as Git.
 					Additionally, the editor allows creating multiple translations for texts and images.
-					Assets reference each other by Ids, and actual version of the translatable asset can be loaded based on the selected language.
+					Assets reference each other by IDs, and actual version of the translatable asset can be loaded based on the selected language.
 
 					The core of the editor is the simple nodes system which allows combining all elements together to create a story for the game.
 				</p>
@@ -108,28 +106,28 @@
 					The editor is split into three layers: <strong>Data</strong>, <strong>Bridge</strong> and <strong>UI</strong>
 				</p>
 				<p>
-					Data layer is the 'Brain' of the editor. It contains the assets database which stores all the
+					The <strong>Data</strong> layer is the 'Brain' of the editor. It contains the assets database which stores all the
 					assets on disk, and contains methods to convert <code>YAML</code> into <code>C++</code> objects.
-					I wanted to bo able to replace the <strong>Data</strong> layer in the future (for example, for a server-based
+					I wanted to be able to replace the <strong>Data</strong> layer in the future (for example, with a server-based
 					solution), so it only exposes the <code>C</code> API for exchanging data.
-					Creating the <code>C</code> API was a difficult task, because that was my first time, and there is a lot to
+					Creating the <code>C</code> API was a difficult task, because I hadn't created such API before, and there is a lot to
 					keep in mind when dealing with <code>DLL-boundaries</code>.
 					I implemented the API by using entry functions which initialize pointers to interfaces, and then
 					exchanging data via those interfaces.
-					You can find an example in the code samples <a>below</a>;
+					You can find an example in the code samples <a class="smoothscroll" href="#code-examples">below</a>.
 				</p>
 				<p>
-					The Bridge layer is a connector between Data and UI layers. It converts <code>C</code> and <code>C++</code> objects
-					back and forth, giving the UI layer possibility to deal only with <code>C++</code> objects.
-					And last, but not least, the UI layer is responsible for displaying the UI. It takes data via
-					Bridge layer and display it using the <strong>Dear ImGui</strong> library.
-					Below, you can find an image showing the general architecture. Click on it to enlarge the image.
+					The <strong>Bridge</strong> layer is a connector between <strong>Data</strong> and <strong>UI</strong> layers. It converts <code>C</code> and <code>C++</code> objects
+					back and forth, giving the <strong>UI</strong> layer possibility to deal only with <code>C++</code> objects.
+					And last but not least, the <strong>UI</strong> layer is responsible for displaying the user interface. It takes data via
+					<strong>Bridge</strong> layer and displays it using the <strong>Dear ImGui</strong> library.
+					Below, you can find an image showing the general architecture.
 				</p>
-				<p><img class="modal-image" id="myImage" src="images/EditorArchitectureExample.png" alt="EDITOR'S ARCHITECTURE"></p>
+				<p><img class="modal-image" id="myImage" src="images/EditorArchitectureExample.png" alt="EDITOR'S ARCHITECTURE" data-wide=true></p>
 
-				<h3>Code Examples</h3>
+				<h3 id="code-examples">Code Examples</h3>
 				<p>
-					Below, you can find a few example of code from the project.
+					Below, you can find a few example of the project's code.
 					The entire source code is not currently publicly available, so I am including only a couple of examples.
 
 					<!-- Api.h and Api.cpp -->
@@ -186,7 +184,8 @@
 
 	<div id="images-modal" class="modal">
 		<span class="close">&times;</span>
-		<img class="modal-content" id="img01">
+		<img class="modal-content modal-content-narrow" id="img01">
+		<img class="modal-content modal-content-wide" id="img02">
 		<div id="caption"></div>
 	</div>
 
@@ -202,52 +201,6 @@
 				<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form below.</p>
 			</div>
 		</div> <!-- /section-intro -->
-
-		<div class="row contact-form">
-			<div class="col-twelve">
-				<!-- form -->
-				<form name="contactForm" id="contactForm" method="post" action="">
-					<fieldset>
-						<div class="form-field">
-							<input name="contactName" type="text" id="contactName" placeholder="Name" value=""
-								minlength="2" required="">
-						</div>
-						<div class="form-field">
-							<input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value=""
-								required="">
-						</div>
-						<div class="form-field">
-							<input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
-						</div>
-						<div class="form-field">
-							<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10"
-								cols="50" required=""></textarea>
-						</div>
-						<div class="form-field">
-							<button class="submitform">Submit</button>
-							<div id="submit-loader">
-								<div class="text-loader">Sending...</div>
-								<div class="s-loader">
-									<div class="bounce1"></div>
-									<div class="bounce2"></div>
-									<div class="bounce3"></div>
-								</div>
-							</div>
-						</div>
-
-					</fieldset>
-				</form> <!-- Form End -->
-
-				<!-- contact-warning -->
-				<div id="message-warning"></div>
-				<!-- contact-success -->
-				<div id="message-success">
-					<i class="fa fa-check"></i>Your message was sent, thank you!<br>
-				</div>
-
-			</div> <!-- /col-twelve -->
-
-		</div> <!-- /contact-form -->
 
 		<div class="row contact-info">
 			<div class="col-half tab-full">
@@ -306,6 +259,7 @@
 	<script src="js/accordion.js"></script>
 	<script>
 		wheelzoom(document.querySelectorAll("#img01"));
+		wheelzoom(document.querySelectorAll("#img02"));
 	</script>
 </body>
 
