@@ -6,7 +6,10 @@ var captionText = document.getElementById("caption");
 let closeModal = function() {
   modal.style.display = "none";
   modalImg.style.display = "none";
-  wideModalImage.style.display = "none";
+
+  if (wideModalImage) {
+    wideModalImage.style.display = "none";
+  }
 }
 
 var images = document.getElementsByClassName("modal-image");
@@ -51,7 +54,7 @@ modal.onclick = function() {
   closeModal();
 }
 
-document.onkeydown = function(e) {
+window.onkeydown = function(e) {
   if (e.key == "Escape") {
     closeModal();
   }

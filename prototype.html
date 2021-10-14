@@ -5,178 +5,177 @@
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
-<head>
+	<head>
 
-	<!--- basic page needs
-   ================================================== -->
-	<meta charset="utf-8">
-	<title>3D Turn Based Game Prototype</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<!-- mobile specific metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- CSS
-   ================================================== -->
-	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/vendor.css">
-	<link rel="stylesheet" href="css/custom.css">
-
-	<!-- script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
-
-	<!-- favicons
+		<!--- basic page needs
 	================================================== -->
-	<link rel="icon" type="image/png" href="favicon.png">
+		<meta charset="utf-8">
+		<title>3D Turn Based Game Prototype</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-</head>
+		<!-- mobile specific metas
+	================================================== -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<body id="top">
-	<!-- header 
-   ================================================== -->
-	<header>
-		<div class="row">
-			<div class="top-bar">
-				<a class="menu-toggle" href="#"><span>Menu</span></a>
+		<!-- CSS
+	================================================== -->
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/vendor.css">
+		<link rel="stylesheet" href="css/custom.css">
 
-				<div class="logo">
-					<a href="index.html" class="contact-link">TC</a>
+		<!-- script
+	================================================== -->
+		<script src="js/modernizr.js"></script>
+
+		<!-- favicons
+		================================================== -->
+		<link rel="icon" type="image/png" href="favicon.png">
+
+	</head>
+
+	<body id="top">
+		<!-- header 
+	================================================== -->
+		<header>
+			<div class="row">
+				<div class="top-bar">
+					<a class="menu-toggle" href="#"><span>Menu</span></a>
+
+					<div class="logo">
+						<a href="index.html" class="contact-link">TC</a>
+					</div>
+					<nav id="main-nav-wrap">
+						<ul class="main-navigation">
+							<li><a href="index.html#intro" title="">Home</a></li>
+							<li><a href="index.html#about" title="">About</a></li>
+							<li><a href="index.html#resume" title="">Projects</a></li>
+							<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
+						</ul>
+					</nav>
 				</div>
-				<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li><a href="index.html#intro" title="">Home</a></li>
-						<li><a href="index.html#about" title="">About</a></li>
-						<li><a href="index.html#resume" title="">Projects</a></li>
-						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
-					</ul>
-				</nav>
 			</div>
+		</header>
+
+		<!-- Content
+	================================================== -->
+		<section id="project">
+			<div class="row section-intro">
+				<div class="col-twelve">
+
+					<h1>3D TURN-BASED GAME PROTOTYPE</h1>
+					<h3 style="color: #888888;">APRIL 2020 - NOVEMBER 2020</h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-six tab-full">
+					<div class="fluid-video-wrapper">
+						<iframe src="https://www.youtube.com/embed/-64TgDOXRQo" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+					</div>
+				</div>
+				<div class="col-six tab-full">
+					<h3>Project Description</h3>
+
+					<p>
+						<img width="120" height="120" class="pull-left" alt="sample-image" src="images/wolf.jpg">
+						In April 2020, as part of the 3-person team, I started working on a 3D turn-based strategy game prototype to test game concepts and ideas.
+					</p>
+					<p>
+						The game is similar to a card or board game. In every turn, player can move its party to one of the neighbors fields, using action points. Every field contains a hidden event, the player has to resolve in order to move forward.
+						For every event, player selects characters from their party to participate. Then, event is resolved and the result is calculated based on a randomly generated value and characters' attributes modifiers.
+						Outside of events, player can also use food to heal characters, and use action points to discover neighbor fields to see the event the field is hiding.
+					</p>
+					<p>
+						For the purpose of this project, I implemented the following things using <strong>Unity C# Scripts</strong>:
+						<ul>
+							<li>Party movement using mouse</li>
+							<li>Characters' health and energy change per turn based on various conditions</li>
+							<li>Randomly generated map</li>
+							<li>Events drawing and resolution logic</li>
+							<li>Basic equipment system with two types of items, permanent and consumable items (affecting only next event)</li>
+						</ul>
+					</p>
+				</div>
+			</div> <!-- /row -->
+		</section>
+
+		<div id="images-modal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content" id="img01">
+			<div id="caption"></div>
 		</div>
-	</header>
 
-	<!-- Content
-   ================================================== -->
-	<section id="project">
-		<div class="row section-intro">
-			<div class="col-twelve">
+		<!-- contact
+	================================================== -->
+		<section id="contact">
 
-				<h1>3D TURN BASED GAME PROTOTYPE</h1>
-				<h3 style="color: #888888;">APRIL 2020 - NOVEMBER 2020</h3>
-			</div>
+			<div class="row section-intro">
+				<div class="col-twelve">
+					<h5>Contact</h5>
+					<h1>I'd Love To Hear From You.</h1>
+
+					<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form below.</p>
+				</div>
+			</div> <!-- /section-intro -->
+
+			<div class="row contact-info">
+				<div class="col-half tab-full">
+					<div class="icon">
+						<i class="icon-pin"></i>
+					</div>
+
+					<h5>Find Me On</h5>
+					<p>
+						<i class="fa fa-github" style="color: #FFFF;"></i> <a href="https://github.com/ComaszTyrulik" class="contact-link">Github</a><br>
+						<i class="fa fa-linkedin" style="color: #FFFF;"></i> <a href="https://www.linkedin.com/in/tomasz-cyrulik/" class="contact-link">LinkedIn</a>
+					</p>
+				</div>
+
+				<div class="col-half tab-full">
+					<div class="icon">
+						<i class="icon-mail"></i>
+					</div>
+
+					<h5>Email Me At</h5>
+					<p><a href="mailto:tomaszcyrulikdevelopment@gmail.com" class="contact-link">tomaszcyrulikdevelopment@gmail.com</a></p>
+				</div>
+			</div> <!-- /contact-info -->
+		</section> <!-- /contact -->
+
+		<!-- footer
+	================================================== -->
+		<footer>
+			<div class="row">
+				<div class="col-six tab-full">
+					<div class="copyright">
+						<span>© Copyright Tomasz Cyrulik 2021</span>
+						<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
+					</div>
+				</div>
+
+				<div id="go-top">
+					<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+				</div>
+
+			</div> <!-- /row -->
+		</footer>
+
+		<div id="preloader">
+			<div id="loader"></div>
 		</div>
 
-		<div class="row">
-			<div class="col-six tab-full">
-                <div class="fluid-video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/-64TgDOXRQo" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
-                </div>
-            </div>
-			<div class="col-six tab-full">
-				<h3>Project Description</h3>
-
-				<p>
-					<img width="120" height="120" class="pull-left" alt="sample-image" src="images/wolf.jpg">
-					In April 2020, as part of the 3-person team, I started working on a 3D turn-based strategy game prototype to test game concepts and ideas.
-				</p>
-				<p>
-                    In every turn, player can move its party to one of the neighbors fields, using action points. Every field contains a hidden event, the player has to resolve in order to move forward.
-                    For every event, player selects characters from their party to participate. Then, event is resolved and the result is calculated based on a randomly generated value and characters' attributes modifiers.
-                    Outside of events, player can also use food to heal characters, and use action points to discover neighbor fields to see the event the field is hiding.
-                </p>
-                <p>
-                    For the purpose of this project, I implemented the following things using <strong>Unity C# Scripts</strong>:
-                    <ul>
-                        <li>Party movement using mouse</li>
-                        <li>Characters' health and energy change per turn based on various conditions</li>
-                        <li>Randomly generated map</li>
-                        <li>Events drawing and resolution logic</li>
-                        <li>Basic equipment system with two types of items, permanent and consumable items (affecting only next event)</li>
-                    </ul>
-                </p>
-			</div>
-		</div> <!-- /row -->
-	</section>
-
-	<div id="images-modal" class="modal">
-		<span class="close">&times;</span>
-		<img class="modal-content" id="img01">
-		<div id="caption"></div>
-	</div>
-
-	<!-- contact
-   ================================================== -->
-	<section id="contact">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-				<h5>Contact</h5>
-				<h1>I'd Love To Hear From You.</h1>
-
-				<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form below.</p>
-			</div>
-		</div> <!-- /section-intro -->
-
-		<div class="row contact-info">
-			<div class="col-half tab-full">
-				<div class="icon">
-					<i class="icon-pin"></i>
-				</div>
-
-				<h5>Find Me On</h5>
-				<p>
-					<i class="fa fa-github" style="color: #FFFF;"></i> <a href="https://github.com/ComaszTyrulik" class="contact-link">Github</a><br>
-					<i class="fa fa-linkedin" style="color: #FFFF;"></i> <a href="https://www.linkedin.com/in/tomasz-cyrulik/" class="contact-link">LinkedIn</a>
-				</p>
-			</div>
-
-			<div class="col-half tab-full">
-				<div class="icon">
-					<i class="icon-mail"></i>
-				</div>
-
-				<h5>Email Me At</h5>
-				<p><a href="mailto:tomaszcyrulikdevelopment@gmail.com" class="contact-link">tomaszcyrulikdevelopment@gmail.com</a></p>
-			</div>
-		</div> <!-- /contact-info -->
-	</section> <!-- /contact -->
-
-	<!-- footer
-   ================================================== -->
-	<footer>
-		<div class="row">
-			<div class="col-six tab-full">
-				<div class="copyright">
-					<span>© Copyright Tomasz Cyrulik 2021</span>
-					<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
-				</div>
-			</div>
-
-			<div id="go-top">
-				<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
-			</div>
-
-		</div> <!-- /row -->
-	</footer>
-
-	<div id="preloader">
-		<div id="loader"></div>
-	</div>
-
-	<!-- Java Script
-   ================================================== -->
-	<script src="js/jquery-2.1.3.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/modal.js"></script>
-	<script src="js/wheelzoom-master/wheelzoom.js"></script>
-	<script src="js/accordion.js"></script>
-	<script>
-		wheelzoom(document.querySelectorAll("#img01"));
-	</script>
-</body>
-
+		<!-- Java Script
+	================================================== -->
+		<script src="js/jquery-2.1.3.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/modal.js"></script>
+		<script src="js/wheelzoom-master/wheelzoom.js"></script>
+		<script src="js/accordion.js"></script>
+		<script>
+			wheelzoom(document.querySelectorAll("#img01"));
+		</script>
+	</body>
 </html>

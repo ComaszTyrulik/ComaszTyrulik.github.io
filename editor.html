@@ -5,262 +5,261 @@
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
-<head>
+	<head>
 
-	<!--- basic page needs
-   ================================================== -->
-	<meta charset="utf-8">
-	<title>Node Based Editor</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<!-- mobile specific metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- CSS
-   ================================================== -->
-	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/vendor.css">
-	<link rel="stylesheet" href="css/custom.css">
-	<link rel="stylesheet" href="css/fonts.css">
-
-	<!-- script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
-
-	<!-- favicons
+		<!--- basic page needs
 	================================================== -->
-	<link rel="icon" type="image/png" href="favicon.png">
+		<meta charset="utf-8">
+		<title>Node Based Editor</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-</head>
+		<!-- mobile specific metas
+	================================================== -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<body id="top">
-	<!-- header 
-   ================================================== -->
-	<header>
-		<div class="row">
-			<div class="top-bar">
-				<a class="menu-toggle" href="#"><span>Menu</span></a>
+		<!-- CSS
+	================================================== -->
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/vendor.css">
+		<link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/fonts.css">
 
-				<div class="logo">
-					<a href="index.html" class="contact-link">TC</a>
-				</div>
-				<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li><a href="index.html#intro" title="">Home</a></li>
-						<li><a href="index.html#about" title="">About</a></li>
-						<li><a href="index.html#resume" title="">Projects</a></li>
-						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</header>
+		<!-- script
+	================================================== -->
+		<script src="js/modernizr.js"></script>
 
-	<!-- Content
-   ================================================== -->
-	<section id="project">
-		<div class="row section-intro">
-			<div class="col-twelve">
+		<!-- favicons
+		================================================== -->
+		<link rel="icon" type="image/png" href="favicon.png">
 
-				<h1>Node Based Editor</h1>
-				<h3 style="color: #888888;">DECEMBER 2020 - PRESENT</h3>
-			</div>
-		</div>
+	</head>
 
-		<div class="row">
-			<div class="col-six tab-full"><p><img class="modal-image" src="images/nodes_view.png" alt="EDITOR'S NODES VIEW"></p></div>
-			<div class="col-six tab-full">
-				<h3>Project Description</h3>
+	<body id="top">
+		<!-- header 
+	================================================== -->
+		<header>
+			<div class="row">
+				<div class="top-bar">
+					<a class="menu-toggle" href="#"><span>Menu</span></a>
 
-				<p><a href="https://creativemarket.com/Becris"><img width="120" height="120" class="pull-left" alt="sample-image" src="images/nodes.png"></a>
-					In November 2020, my team and I finished working on a turn based strategy game prototype, and we wanted to test our other ideas.
-					We started working on a graphic novel game. We wanted to have a tool that would allow us creating
-					content for our game, but also something that would allow players to create their own stories and alter existing ones.
-					That's how we started working on the node based editor - our game's Story Editor.
-					In cooperation with game designer, I created a list of requirements which then turned into a design
-					document containing all aspects of the editor. The project is still in progress, so not all of the features are implemented yet.
-				</p>
-
-				<p>
-					The editor's data is based on assets. Each element of the story, such as character or a dialog option,
-					is an asset of its own type.
-					All assets are stored on the drive in the `YAML` format providing relatively easy sharing via
-					version control system, such as Git.
-					Additionally, the editor allows creating multiple translations for texts and images.
-					Assets reference each other by IDs, and actual version of the translatable asset can be loaded based on the selected language.
-
-					The core of the editor is the simple nodes system which allows combining all elements together to create a story for the game.
-				</p>
-				<p>
-					Story Editor is created with <strong>C++17</strong> and <a
-						href="https://github.com/ocornut/imgui">Dear ImGui</a> for UI.
-					I also use other libraries such as <a href="https://github.com/Cyan4973/xxHash">xxHash</a>, <a href="https://github.com/mariusbancila/stduuid">stduuid</a> or <a href="https://github.com/jbeder/yaml-cpp">yaml-cpp</a>.
-					I am also using <a href="https://github.com/google/googletest">GoogleTest</a> as a testing framework.
-				</p>
-
-				<h3>Architecture</h3>
-				<p>
-					The editor is split into three layers: <strong>Data</strong>, <strong>Bridge</strong> and <strong>UI</strong>
-				</p>
-				<p>
-					The <strong>Data</strong> layer is the 'Brain' of the editor. It contains the assets database which stores all the
-					assets on disk, and contains methods to convert <code>YAML</code> into <code>C++</code> objects.
-					I wanted to be able to replace the <strong>Data</strong> layer in the future (for example, with a server-based
-					solution), so it only exposes the <code>C</code> API for exchanging data.
-					Creating the <code>C</code> API was a difficult task, because I hadn't created such API before, and there is a lot to
-					keep in mind when dealing with <code>DLL-boundaries</code>.
-					I implemented the API by using entry functions which initialize pointers to interfaces, and then
-					exchanging data via those interfaces.
-					You can find an example in the code samples <a class="smoothscroll" href="#code-examples">below</a>.
-				</p>
-				<p>
-					The <strong>Bridge</strong> layer is a connector between <strong>Data</strong> and <strong>UI</strong> layers. It converts <code>C</code> and <code>C++</code> objects
-					back and forth, giving the <strong>UI</strong> layer possibility to deal only with <code>C++</code> objects.
-					And last but not least, the <strong>UI</strong> layer is responsible for displaying the user interface. It takes data via
-					<strong>Bridge</strong> layer and displays it using the <strong>Dear ImGui</strong> library.
-					Below, you can find an image showing the general architecture.
-				</p>
-				<p><img class="modal-image" id="myImage" src="images/EditorArchitectureExample.png" alt="EDITOR'S ARCHITECTURE" data-wide=true></p>
-
-				<h3 id="code-examples">Code Examples</h3>
-				<p>
-					Below, you can find a few example of the project's code.
-					The entire source code is not currently publicly available, so I am including only a couple of examples.
-
-					<!-- Api.h and Api.cpp -->
-					<div class="full-width accordion">C API Functions</div>
-					<div class="panel">
-						<p>
-							Here, you can find an example of C API functions used to initialize the Data Layer API.
-							Their declarations are placed inside the <code>Api.h</code> header, used by the API user.
-							The actual implementation of these functions is placed inside the <code>Api.cpp</code> file.
-						</p>
-						<p>
-							Once initialized,  the <code>IApi</code> interface provides access to other interfaces, such as <code>IProjectProvider</code> and <code>IProject</code>.
-							Those interfaces are used to create/open project, and to operate on project's data (assets, nodes, etc.).
-						</p>
-						<p>
-							Functions Declarations
-							<script src="https://gist.github.com/ComaszTyrulik/9b95a581a2017d8633aa4627de66eb17.js"></script>
-						</p>
-						<p>
-							Functions Definitions
-							<script src="https://gist.github.com/ComaszTyrulik/eea75a6981a95c5ec970129f35da9e23.js"></script>
-						</p>
-						<p>
-							<code>IApi</code> interface implementation used by <code>InitializeApi()</code> function
-							<script src="https://gist.github.com/ComaszTyrulik/a7c7143da8a02adcbc27f61e38c5c4b3.js"></script>
-						</p>
+					<div class="logo">
+						<a href="index.html" class="contact-link">TC</a>
 					</div>
-				</p>
-				<p>
-					<div class="full-width accordion">Nodes Rendering</div>
-					<div class="panel">
-						<p>
-							This section contains the main components responsible for rendering nodes.<br>
-							
-							The rendering process starts with <code>NodesViewWindowController</code> class responsible for handling logic of the Nodes View.
-							It updates camera, handles user input and uses renderers to render grid and nodes.
-							<script src="https://gist.github.com/ComaszTyrulik/f222bc78151fa5850738fbe42a5dc763.js"></script>
-						</p>
-						<p>
-							Next, the <code>NodesRenderer</code> class, implementing the <code>INodesRenderer</code> interface, handles rendering of nodes and their transitions.
-							It uses provided camera and <code>EditorNodeAssets</code> to render only visible nodes. It uses the <code>INodeRenderer</code> interface to issue draw calls for each node and its transitions.
-							Returns list of nodes which are actually visible on the screen, so that the <code>NodesViewWindowController</code> can handle events of only the visible nodes.
-							<script src="https://gist.github.com/ComaszTyrulik/70d6911afe5a718c638b47767dc76755.js"></script>
-						</p>
-						<p>
-							And last but not least, there is the <code>ImGuiNodeRenderer</code> class, implementing the <code>INodeRenderer</code> interface which uses <code>DearImGui</code> to render single node onto the screen.
-							<script src="https://gist.github.com/ComaszTyrulik/45f3c93ca51f29327f95a177c0733cdc.js"></script>
-						</p>
+					<nav id="main-nav-wrap">
+						<ul class="main-navigation">
+							<li><a href="index.html#intro" title="">Home</a></li>
+							<li><a href="index.html#about" title="">About</a></li>
+							<li><a href="index.html#resume" title="">Projects</a></li>
+							<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<!-- Content
+	================================================== -->
+		<section id="project">
+			<div class="row section-intro">
+				<div class="col-twelve">
+
+					<h1>Node Based Editor</h1>
+					<h3 style="color: #888888;">DECEMBER 2020 - PRESENT</h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-six tab-full"><p><img class="modal-image" src="images/nodes_view.png" alt="EDITOR'S NODES VIEW"></p></div>
+				<div class="col-six tab-full">
+					<h3>Project Description</h3>
+
+					<p><a href="https://creativemarket.com/Becris"><img width="120" height="120" class="pull-left" alt="sample-image" src="images/nodes.png"></a>
+						In November 2020, my team and I finished working on a <a href="prototype.html">turn based strategy game prototype</a>, and we wanted to test our other ideas.
+						We started working on a graphic novel game. We wanted to have a tool that would allow us creating
+						content for the game, but also something that would give players a possibility to create their own stories and alter existing ones.
+						That's how we started working on the node-based story editor.
+						In cooperation with game designer, I created a list of requirements which then turned into a design
+						document containing all aspects of the editor. The project is still in progress, so not all of the features are implemented yet.
+					</p>
+
+					<p>
+						The editor's data is based on assets. Each element of the story, such as character or a dialog option,
+						is an asset of its own type.
+						All assets are stored on the drive in the <code>YAML</code> format providing relatively easy sharing via
+						version control system, such as Git.
+						Additionally, the editor allows creating multiple translations for texts and images.
+						Assets reference each other by IDs, and actual version of the translatable asset can be loaded based on the selected language.
+
+						The core of the editor is the simple nodes system which allows combining all elements together to create a story for the game.
+					</p>
+					<p>
+						Story Editor is created with <strong>C++17</strong> and <a
+							href="https://github.com/ocornut/imgui">Dear ImGui</a> for UI.
+						I also use other libraries such as <a href="https://github.com/Cyan4973/xxHash">xxHash</a>, <a href="https://github.com/mariusbancila/stduuid">stduuid</a> or <a href="https://github.com/jbeder/yaml-cpp">yaml-cpp</a>.
+						Additionally, I use <a href="https://github.com/google/googletest">GoogleTest</a> as a testing framework.
+					</p>
+
+					<h3>Architecture</h3>
+					<p>
+						The editor is split into three layers: <strong>Data</strong>, <strong>Bridge</strong> and <strong>UI</strong>
+					</p>
+					<p>
+						The <strong>Data</strong> layer is the 'Brain' of the editor. It contains the assets database which stores all the
+						assets on disk, and contains methods to convert <code>YAML</code> into <code>C++</code> objects.
+						I wanted to be able to replace the <strong>Data</strong> layer in the future (for example, with a server-based
+						solution), so it only exposes the <code>C</code> API for exchanging data.
+						Creating the <code>C</code> API was a difficult task, because I hadn't created such API before, and there is a lot to
+						keep in mind when dealing with <code>DLL-boundaries</code>.
+						I implemented the API by using entry functions which initialize pointers to interfaces, and then
+						exchanging data via those interfaces.
+						You can find an example in the code samples <a class="smoothscroll" href="#code-examples">below</a>.
+					</p>
+					<p>
+						The <strong>Bridge</strong> layer is a connector between <strong>Data</strong> and <strong>UI</strong> layers. It converts <code>C</code> and <code>C++</code> objects
+						back and forth, giving the <strong>UI</strong> layer possibility to deal only with <code>C++</code> objects.
+						And last but not least, the <strong>UI</strong> layer is responsible for displaying the user interface. It takes data via
+						<strong>Bridge</strong> layer and displays it using the <strong>Dear ImGui</strong> library.
+						Below, you can find an image showing the general architecture.
+					</p>
+					<p><img class="modal-image" id="myImage" src="images/EditorArchitectureExample.png" alt="EDITOR'S ARCHITECTURE" data-wide=true></p>
+
+					<h3 id="code-examples">Code Examples</h3>
+					<p>
+						Below, you can find a few example of the project's code.
+						The entire source code is not currently publicly available, so I am including only a couple of examples.
+
+						<!-- Api.h and Api.cpp -->
+						<div class="full-width accordion">C API Functions</div>
+						<div class="panel">
+							<p>
+								Here, you can find an example of C API functions used to initialize the Data Layer API.
+								Their declarations are placed inside the <code>Api.h</code> header, used by the API user.
+								The actual implementation of these functions is placed inside the <code>Api.cpp</code> file.
+							</p>
+							<p>
+								Once initialized,  the <code>IApi</code> interface provides access to other interfaces, such as <code>IProjectProvider</code> and <code>IProject</code>.
+								Those interfaces are used to create/open project, and to operate on project's data (assets, nodes, etc.).
+							</p>
+							<p>
+								Functions Declarations
+								<script src="https://gist.github.com/ComaszTyrulik/9b95a581a2017d8633aa4627de66eb17.js"></script>
+							</p>
+							<p>
+								Functions Definitions
+								<script src="https://gist.github.com/ComaszTyrulik/eea75a6981a95c5ec970129f35da9e23.js"></script>
+							</p>
+							<p>
+								<code>IApi</code> interface implementation used by <code>InitializeApi()</code> function
+								<script src="https://gist.github.com/ComaszTyrulik/a7c7143da8a02adcbc27f61e38c5c4b3.js"></script>
+							</p>
+						</div>
+					</p>
+					<p>
+						<div class="full-width accordion">Nodes Rendering</div>
+						<div class="panel">
+							<p>
+								This section contains the main components responsible for rendering nodes.<br>
+								
+								The rendering process starts with the <code>NodesViewWindowController</code> class responsible for handling logic of the Nodes View.
+								It updates camera, handles user input and uses renderers to render grid and nodes.
+								<script src="https://gist.github.com/ComaszTyrulik/f222bc78151fa5850738fbe42a5dc763.js"></script>
+							</p>
+							<p>
+								Next, the <code>NodesRenderer</code> class, implementing the <code>INodesRenderer</code> interface, handles rendering of nodes and their transitions.
+								It uses provided camera and <code>EditorNodeAssets</code> to render only visible nodes. It uses the <code>INodeRenderer</code> interface to issue draw calls for each node and its transitions.
+								Returns list of nodes which are actually visible on the screen, so that the <code>NodesViewWindowController</code> can handle events of only the visible nodes.
+								<script src="https://gist.github.com/ComaszTyrulik/70d6911afe5a718c638b47767dc76755.js"></script>
+							</p>
+							<p>
+								And last but not least, there is the <code>ImGuiNodeRenderer</code> class, implementing the <code>INodeRenderer</code> interface which uses <code>DearImGui</code> to render single node onto the screen.
+								<script src="https://gist.github.com/ComaszTyrulik/45f3c93ca51f29327f95a177c0733cdc.js"></script>
+							</p>
+						</div>
+					</p>
+				</div>
+			</div> <!-- /row -->
+		</section>
+
+		<div id="images-modal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content modal-content-narrow" id="img01">
+			<img class="modal-content modal-content-wide" id="img02">
+			<div id="caption"></div>
+		</div>
+
+		<!-- contact
+	================================================== -->
+		<section id="contact">
+
+			<div class="row section-intro">
+				<div class="col-twelve">
+					<h5>Contact</h5>
+					<h1>I'd Love To Hear From You.</h1>
+
+					<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form below.</p>
+				</div>
+			</div> <!-- /section-intro -->
+
+			<div class="row contact-info">
+				<div class="col-half tab-full">
+					<div class="icon">
+						<i class="icon-pin"></i>
 					</div>
-				</p>
-			</div>
-		</div> <!-- /row -->
-	</section>
 
-	<div id="images-modal" class="modal">
-		<span class="close">&times;</span>
-		<img class="modal-content modal-content-narrow" id="img01">
-		<img class="modal-content modal-content-wide" id="img02">
-		<div id="caption"></div>
-	</div>
-
-	<!-- contact
-   ================================================== -->
-	<section id="contact">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-				<h5>Contact</h5>
-				<h1>I'd Love To Hear From You.</h1>
-
-				<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form below.</p>
-			</div>
-		</div> <!-- /section-intro -->
-
-		<div class="row contact-info">
-			<div class="col-half tab-full">
-				<div class="icon">
-					<i class="icon-pin"></i>
+					<h5>Find Me On</h5>
+					<p>
+						<i class="fa fa-github" style="color: #FFFF;"></i> <a href="https://github.com/ComaszTyrulik" class="contact-link">Github</a><br>
+						<i class="fa fa-linkedin" style="color: #FFFF;"></i> <a href="https://www.linkedin.com/in/tomasz-cyrulik/" class="contact-link">LinkedIn</a>
+					</p>
 				</div>
 
-				<h5>Find Me On</h5>
-				<p>
-					<i class="fa fa-github" style="color: #FFFF;"></i> <a href="https://github.com/ComaszTyrulik" class="contact-link">Github</a><br>
-					<i class="fa fa-linkedin" style="color: #FFFF;"></i> <a href="https://www.linkedin.com/in/tomasz-cyrulik/" class="contact-link">LinkedIn</a>
-				</p>
-			</div>
+				<div class="col-half tab-full">
+					<div class="icon">
+						<i class="icon-mail"></i>
+					</div>
 
-			<div class="col-half tab-full">
-				<div class="icon">
-					<i class="icon-mail"></i>
+					<h5>Email Me At</h5>
+					<p><a href="mailto:tomaszcyrulikdevelopment@gmail.com" class="contact-link">tomaszcyrulikdevelopment@gmail.com</a></p>
+				</div>
+			</div> <!-- /contact-info -->
+		</section> <!-- /contact -->
+
+		<!-- footer
+	================================================== -->
+		<footer>
+			<div class="row">
+				<div class="col-six tab-full">
+					<div class="copyright">
+						<span>© Copyright Tomasz Cyrulik 2021</span>
+						<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
+						<span>Nodes icon made by <a href="https://creativemarket.com/Becris" title="Becris">Becris</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span>
+					</div>
 				</div>
 
-				<h5>Email Me At</h5>
-				<p><a href="mailto:tomaszcyrulikdevelopment@gmail.com" class="contact-link">tomaszcyrulikdevelopment@gmail.com</a></p>
-			</div>
-		</div> <!-- /contact-info -->
-	</section> <!-- /contact -->
-
-	<!-- footer
-   ================================================== -->
-	<footer>
-		<div class="row">
-			<div class="col-six tab-full">
-				<div class="copyright">
-					<span>© Copyright Tomasz Cyrulik 2021</span>
-					<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
-					<span>Icons made by <a href="https://creativemarket.com/Becris" title="Becris">Becris</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></span>
+				<div id="go-top">
+					<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
 				</div>
-			</div>
 
-			<div id="go-top">
-				<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
-			</div>
+			</div> <!-- /row -->
+		</footer>
 
-		</div> <!-- /row -->
-	</footer>
+		<div id="preloader">
+			<div id="loader"></div>
+		</div>
 
-	<div id="preloader">
-		<div id="loader"></div>
-	</div>
-
-	<!-- Java Script
-   ================================================== -->
-	<script src="js/jquery-2.1.3.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/modal.js"></script>
-	<script src="js/wheelzoom-master/wheelzoom.js"></script>
-	<script src="js/accordion.js"></script>
-	<script>
-		wheelzoom(document.querySelectorAll("#img01"));
-		wheelzoom(document.querySelectorAll("#img02"));
-	</script>
-</body>
-
+		<!-- Java Script
+	================================================== -->
+		<script src="js/jquery-2.1.3.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/modal.js"></script>
+		<script src="js/wheelzoom-master/wheelzoom.js"></script>
+		<script src="js/accordion.js"></script>
+		<script>
+			wheelzoom(document.querySelectorAll("#img01"));
+			wheelzoom(document.querySelectorAll("#img02"));
+		</script>
+	</body>
 </html>

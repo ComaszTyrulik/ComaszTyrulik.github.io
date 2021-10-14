@@ -5,274 +5,274 @@
 <html class="no-js" lang="en">
 <!--<![endif]-->
 
-<head>
+	<head>
 
-	<!--- basic page needs
-   ================================================== -->
-	<meta charset="utf-8">
-	<title>BeastEngine</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<!-- mobile specific metas
-   ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-	<!-- CSS
-   ================================================== -->
-	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/vendor.css">
-	<link rel="stylesheet" href="css/custom.css">
-	<link rel="stylesheet" href="css/slideshow.css">
-
-	<!-- script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
-
-	<!-- favicons
+		<!--- basic page needs
 	================================================== -->
-	<link rel="icon" type="image/png" href="favicon.png">
+		<meta charset="utf-8">
+		<title>BeastEngine</title>
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-</head>
+		<!-- mobile specific metas
+	================================================== -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<body id="top">
-	<!-- header 
-   ================================================== -->
-	<header>
-		<div class="row">
-			<div class="top-bar">
-				<a class="menu-toggle" href="#"><span>Menu</span></a>
+		<!-- CSS
+	================================================== -->
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/vendor.css">
+		<link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/slideshow.css">
 
-				<div class="logo">
-					<a href="index.html" class="contact-link">TC</a>
+		<!-- script
+	================================================== -->
+		<script src="js/modernizr.js"></script>
+
+		<!-- favicons
+		================================================== -->
+		<link rel="icon" type="image/png" href="favicon.png">
+
+	</head>
+
+	<body id="top">
+		<!-- header 
+	================================================== -->
+		<header>
+			<div class="row">
+				<div class="top-bar">
+					<a class="menu-toggle" href="#"><span>Menu</span></a>
+
+					<div class="logo">
+						<a href="index.html" class="contact-link">TC</a>
+					</div>
+					<nav id="main-nav-wrap">
+						<ul class="main-navigation">
+							<li><a href="index.html#intro" title="">Home</a></li>
+							<li><a href="index.html#about" title="">About</a></li>
+							<li><a href="index.html#resume" title="">Projects</a></li>
+							<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
+						</ul>
+					</nav>
 				</div>
-				<nav id="main-nav-wrap">
-					<ul class="main-navigation">
-						<li><a href="index.html#intro" title="">Home</a></li>
-						<li><a href="index.html#about" title="">About</a></li>
-						<li><a href="index.html#resume" title="">Projects</a></li>
-						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
+			</div>
+		</header>
+
+		<!-- Content
+	================================================== -->
+		<section id="project">
+			<div class="row section-intro">
+				<div class="col-twelve">
+
+					<h1>BeastEngine + BeastEngineGraphics</h1>
+					<h3 style="color: #888888;">AUGUST 2016 - PRESENT</h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-six tab-full">
+					<div class="fluid-video-wrapper">
+						<iframe src="https://www.youtube.com/embed/KD-g4N5pjBk" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					</div>
+				</div>
+				<div class="col-six tab-full">
+					<h3>Project Description</h3>
+
+					<p>
+						<img width="120" height="120" class="pull-left" alt="sample-image" src="images/beastengine.png">
+						The origins of the <strong>BeastEngine</strong> project go back to 2015 when I started learning games
+						programming. I spent a year creating simple games like 'Tic Tac Toe' or 'Jawbreaker/Bubblets', and I
+						wanted to learn more about the technology behind games in general.
+						That's how I started learning about game engines in 2016 by following a few youtube series which
+						then turned into development of the BeastEngineGraphics.<br>
+						The initial idea behind it, was to create a 2D game engine which would serve as a framework for a 2D
+						Action-RPG game, but I quickly discoverd that I was more interested in the engine development than
+						the game itself, so I focused entirely on the former.
+					</p>
+					<p>
+						I was developing the <strong>BeastEngineGraphics</strong> from August of 2016 to May 2019 in my spare
+						time. I was mostly learning new stuff and trying out different approaches, so eventually it became a
+						sandbox for learning about rendering, and it is more of a rendering library than a game engine.
+						It was written in <code>C++14</code> and <code>Modern OpenGL</code>, but I also used <a
+							href="https://www.libsdl.org/index.php">SDL2</a>, <a
+							href="https://github.com/g-truc/glm">GLM</a>, <a href="https://rapidjson.org/">rapidjson</a> and
+						<a href="https://github.com/nothings/stb/blob/master/stb_image.h">stb_image</a>.<br>
+						During the library's development I implemented:
+					<ul>
+						<li>Phong lighting</li>
+						<li>OpenGL Framebuffers which allowed me to test some deferred rendering</li>
+						<li>Simple, custom animation system which allowed animating color, position and texture coordinates,
+							based on the <a href="https://en.cppreference.com/w/cpp/chrono">std::chrono library</a></li>
+						<li>Basic materials system</li>
+						<li>2D normal mapping</li>
 					</ul>
-				</nav>
-			</div>
+
+					I also created the <strong>Minesweeper</strong> game using the <strong>BeastEngineGraphics.</strong> You can find the Windows 10 version <a href="MinesweeperWin10.zip">here.</a>
+					</p>
+					<p>
+						Here are a few examples of what <strong>BeastEngineGraphics</strong> looks like:
+						<!-- Slideshow container -->
+						<div class="slideshow-container">
+							<!-- Full-width images with number and caption text -->
+							<div class="mySlides fade">
+								<div class="numbertext">1 / 7</div>
+								<img src="images/diffuse_before.png" style="width:100%">
+								<div class="text">No lighting</div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">2 / 7</div>
+								<img src="images/diffuse_after.png" style="width:100%">
+								<div class="text">Diffuse + Normal Maps</div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">3 / 7</div>
+								<img src="images/spot.png" style="width:100%">
+								<div class="text">Spotlight</div>
+							</div>
+							
+							<div class="mySlides fade">
+								<div class="numbertext">4 / 7</div>
+								<img src="images/no_effect.png" style="width:100%">
+								<div class="text">No Effects</div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">5 / 7</div>
+								<img src="images/edge_detection.png" style="width:100%">
+								<div class="text">Edge Detection</div>
+							</div>
+							
+							<div class="mySlides fade">
+								<div class="numbertext">6 / 7</div>
+								<img src="images/blur.png" style="width:100%">
+								<div class="text">Blur</div>
+							</div>
+							
+							<div class="mySlides fade">
+								<div class="numbertext">7 / 7</div>
+								<img src="images/minesweeper.png" style="width:100%">
+								<div class="text">Minesweeper</div>
+							</div>
+
+							<!-- Next and previous buttons -->
+							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+						</div>
+						<br>
+
+						<!-- The dots/circles -->
+						<div style="text-align:center">
+							<span class="dot" onclick="currentSlide(1)"></span>
+							<span class="dot" onclick="currentSlide(2)"></span>
+							<span class="dot" onclick="currentSlide(3)"></span>
+							<span class="dot" onclick="currentSlide(4)"></span>
+							<span class="dot" onclick="currentSlide(5)"></span>
+							<span class="dot" onclick="currentSlide(6)"></span>
+							<span class="dot" onclick="currentSlide(7)"></span>
+						</div>
+					</p>
+					<p>
+						In 2019, I stopped working on the <strong>BeastEngineGraphics</strong> and shifted my focus to other game related technologies.
+						I created <code><a href="https://github.com/ComaszTyrulik/GraphicsAPIsTesting">D3D11</a></code> and <code><a href="https://github.com/ComaszTyrulik/VulkanRenderer">Vulkan</a></code> renderers following online tutorials, and created a few simple <code>Unity</code> projects.
+						With new knowledge, at the beginning of the 2020, I started working on the <strong>BeastEngine</strong>, a 2D Action-RPG game engine, successor of the <strong>BeastEngineGraphics</strong>.
+						It's still in a very early stage, because I was focused mainly on other projects and was only developing this one in my spare time, as a hobby project.
+					</p>
+					<div class="col-half tab-full"><p><img class="modal-image" src="images/d3d11.gif" alt="D3D11 RENDERER"></p></div>
+					<div class="col-half tab-full"><p><img class="modal-image" src="images/vulkan.gif" alt="VULKAN RENDERER"></p></div>
+
+					<h3>Projects Repositories</h3>
+					<ul>
+						<li><i class="fa fa-github"></i> <a href="https://github.com/BeastEngine/BeastEngine">BeastEngine</a></li>
+						<li><i class="fa fa-bitbucket"></i> <a href="https://bitbucket.org/bearengine/bearenginegraphics/src/master/">BeastEngineGraphics</a></li>
+						<li><i class="fa fa-github"></i> <a href="https://github.com/ComaszTyrulik/D3D11Renderer">D3D11 Renderer</a></li>
+						<li><i class="fa fa-github"></i> <a href="https://github.com/ComaszTyrulik/VulkanRenderer">Vulkan Renderer</a></li>
+					</ul>
+				</div>
+			</div> <!-- /row -->
+		</section>
+
+		<div id="images-modal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content modal-content-narrow" id="img01">
+			<div id="caption"></div>
 		</div>
-	</header>
 
-	<!-- Content
-   ================================================== -->
-	<section id="project">
-		<div class="row section-intro">
-			<div class="col-twelve">
+		<!-- contact
+	================================================== -->
+		<section id="contact">
 
-				<h1>BeastEngine + BeastEngineGraphics</h1>
-				<h3 style="color: #888888;">AUGUST 2016 - PRESENT</h3>
-			</div>
+			<div class="row section-intro">
+				<div class="col-twelve">
+					<h5>Contact</h5>
+					<h1>I'd Love To Hear From You.</h1>
+
+					<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form
+						below.</p>
+				</div>
+			</div> <!-- /section-intro -->
+
+			<div class="row contact-info">
+				<div class="col-half tab-full">
+					<div class="icon">
+						<i class="icon-pin"></i>
+					</div>
+
+					<h5>Find Me On</h5>
+					<p>
+						<i class="fa fa-github" style="color: #FFFF;"></i> <a href="https://github.com/ComaszTyrulik" class="contact-link">Github</a><br>
+						<i class="fa fa-linkedin" style="color: #FFFF;"></i> <a
+							href="https://www.linkedin.com/in/tomasz-cyrulik/" class="contact-link">LinkedIn</a>
+					</p>
+				</div>
+
+				<div class="col-half tab-full">
+					<div class="icon">
+						<i class="icon-mail"></i>
+					</div>
+
+					<h5>Email Me At</h5>
+					<p><a href="mailto:tomaszcyrulikdevelopment@gmail.com"
+							class="contact-link">tomaszcyrulikdevelopment@gmail.com</a></p>
+				</div>
+			</div> <!-- /contact-info -->
+		</section> <!-- /contact -->
+
+		<!-- footer
+	================================================== -->
+		<footer>
+			<div class="row">
+				<div class="col-six tab-full">
+					<div class="copyright">
+						<span>© Copyright Tomasz Cyrulik 2021</span>
+						<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
+					</div>
+				</div>
+
+				<div id="go-top">
+					<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+				</div>
+
+			</div> <!-- /row -->
+		</footer>
+
+		<div id="preloader">
+			<div id="loader"></div>
 		</div>
 
-		<div class="row">
-			<div class="col-six tab-full">
-				<div class="fluid-video-wrapper">
-					<iframe src="https://www.youtube.com/embed/KD-g4N5pjBk" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-				</div>
-			</div>
-			<div class="col-six tab-full">
-				<h3>Project Description</h3>
-
-				<p>
-					<img width="120" height="120" class="pull-left" alt="sample-image" src="images/beastengine.png">
-					The origins of the <code>BeastEngine</code> project go back to 2015 when I started learning games
-					programming. I spent a year creating simple games like 'Tic Tac Toe' or 'Jawbreaker/Bubblets', and I
-					wanted to learn more about the technology behind games in general.
-					That's how I started learning about game engines in 2016 by following a few youtube series which
-					then turned into development of the BeastEngineGraphics.<br>
-					The initial idea behind it, was to create a 2D game engine which would serve as a framework for a 2D
-					action-RPG game, but I quickly discoverd that I was more interested in the engine development than
-					the game itself, so I focused entirely on the engine.
-				</p>
-				<p>
-					I was developing the <code>BeastEngineGraphics</code> from August of 2016 to May 2019 in my spare
-					time. I was mostly learning new stuff and trying out different approaches, so eventually it became a
-					sandbox for learning about rendering, and it is more of a rendering library than a game engine.
-					It was written in <code>C++14</code> and <code>Modern OpenGL</code>, but I also used <a
-						href="https://www.libsdl.org/index.php">SDL2</a>, <a
-						href="https://github.com/g-truc/glm">GLM</a>, <a href="https://rapidjson.org/">rapidjson</a> and
-					<a href="https://github.com/nothings/stb/blob/master/stb_image.h">stb_image</a>.<br>
-					During the library's development I implemented:
-				<ul>
-					<li>Phong lighting</li>
-					<li>OpenGL Framebuffers which allowed me to test some deferred rendering</li>
-					<li>Simple, custom animation system which allowed animating color, position and texture coordinates,
-						based on the <a href="https://en.cppreference.com/w/cpp/chrono">std::chrono library</a></li>
-					<li>Basic materials system</li>
-					<li>2D normal mapping</li>
-				</ul>
-
-				I also created the <code>Minesweeper</code> game using the <code>BeastEngineGraphics.</code> You can find the Windows 10 version <a href="MinesweeperWin10.zip">here.</a>
-				</p>
-				<p>
-					<!-- Slideshow container -->
-					<div class="slideshow-container">
-						<!-- Full-width images with number and caption text -->
-						<div class="mySlides fade">
-							<div class="numbertext">1 / 7</div>
-							<img src="images/diffuse_before.png" style="width:100%">
-							<div class="text">No lighting</div>
-						</div>
-
-						<div class="mySlides fade">
-							<div class="numbertext">2 / 7</div>
-							<img src="images/diffuse_after.png" style="width:100%">
-							<div class="text">Diffuse + Normal Maps</div>
-						</div>
-
-						<div class="mySlides fade">
-							<div class="numbertext">3 / 7</div>
-							<img src="images/spot.png" style="width:100%">
-							<div class="text">Spotlight</div>
-						</div>
-						
-						<div class="mySlides fade">
-							<div class="numbertext">4 / 7</div>
-							<img src="images/no_effect.png" style="width:100%">
-							<div class="text">No Effects</div>
-						</div>
-
-						<div class="mySlides fade">
-							<div class="numbertext">5 / 7</div>
-							<img src="images/edge_detection.png" style="width:100%">
-							<div class="text">Edge Detection</div>
-						</div>
-						
-						<div class="mySlides fade">
-							<div class="numbertext">6 / 7</div>
-							<img src="images/blur.png" style="width:100%">
-							<div class="text">Blur</div>
-						</div>
-						
-						<div class="mySlides fade">
-							<div class="numbertext">7 / 7</div>
-							<img src="images/minesweeper.png" style="width:100%">
-							<div class="text">Minesweeper</div>
-						</div>
-
-						<!-- Next and previous buttons -->
-						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-						<a class="next" onclick="plusSlides(1)">&#10095;</a>
-					</div>
-					<br>
-
-					<!-- The dots/circles -->
-					<div style="text-align:center">
-						<span class="dot" onclick="currentSlide(1)"></span>
-						<span class="dot" onclick="currentSlide(2)"></span>
-						<span class="dot" onclick="currentSlide(3)"></span>
-						<span class="dot" onclick="currentSlide(4)"></span>
-						<span class="dot" onclick="currentSlide(5)"></span>
-						<span class="dot" onclick="currentSlide(6)"></span>
-						<span class="dot" onclick="currentSlide(7)"></span>
-					</div>
-				</p>
-				<p>
-					In 2019, I stopped working on the <code>BeastEngineGraphics</code> and shifted my focus to other game related technologies.
-					I created <code><a href="https://github.com/ComaszTyrulik/GraphicsAPIsTesting">D3D11</a></code> and <code><a href="https://github.com/ComaszTyrulik/VulkanRenderer">Vulkan</a></code> renderers following online tutorials, and created a few simple <code>Unity</code> projects.
-					With new knowledge, at the beginning of the 2020, I started working on the <code>BeastEngine</code>, a 2D action-RPG game engine, successor of the <code>BeastEngineGraphics</code>.
-					It's still in a very early stage, because I was focused mainly on other projects and was only developing this one in my spare time, as a hobby project.
-				</p>
-				<div class="col-half tab-full"><p><img class="modal-image" src="images/d3d11.gif" alt="D3D11 RENDERER"></p></div>
-				<div class="col-half tab-full"><p><img class="modal-image" src="images/vulkan.gif" alt="VULKAN RENDERER"></p></div>
-
-				<h3>Projects Repositories</h3>
-				<ul>
-					<li><i class="fa fa-github"></i> <a href="https://github.com/BeastEngine/BeastEngine">BeastEngine</a></li>
-					<li><i class="fa fa-bitbucket"></i> <a href="https://bitbucket.org/bearengine/bearenginegraphics/src/master/">BeastEngineGraphics</a></li>
-					<li><i class="fa fa-github"></i> <a href="https://github.com/ComaszTyrulik/D3D11Renderer">D3D11 Renderer</a></li>
-					<li><i class="fa fa-github"></i> <a href="https://github.com/ComaszTyrulik/VulkanRenderer">Vulkan Renderer</a></li>
-				</ul>
-			</div>
-		</div> <!-- /row -->
-	</section>
-
-	<div id="images-modal" class="modal">
-		<span class="close">&times;</span>
-		<img class="modal-content modal-content-narrow" id="img01">
-		<div id="caption"></div>
-	</div>
-
-	<!-- contact
-   ================================================== -->
-	<section id="contact">
-
-		<div class="row section-intro">
-			<div class="col-twelve">
-				<h5>Contact</h5>
-				<h1>I'd Love To Hear From You.</h1>
-
-				<p class="lead">If you'd like to get in touch with me, please do not hesitate to use the contact form
-					below.</p>
-			</div>
-		</div> <!-- /section-intro -->
-
-		<div class="row contact-info">
-			<div class="col-half tab-full">
-				<div class="icon">
-					<i class="icon-pin"></i>
-				</div>
-
-				<h5>Find Me On</h5>
-				<p>
-					<i class="fa fa-github" style="color: #FFFF;"></i> <a href="https://github.com/ComaszTyrulik" class="contact-link">Github</a><br>
-					<i class="fa fa-linkedin" style="color: #FFFF;"></i> <a
-						href="https://www.linkedin.com/in/tomasz-cyrulik/" class="contact-link">LinkedIn</a>
-				</p>
-			</div>
-
-			<div class="col-half tab-full">
-				<div class="icon">
-					<i class="icon-mail"></i>
-				</div>
-
-				<h5>Email Me At</h5>
-				<p><a href="mailto:tomaszcyrulikdevelopment@gmail.com"
-						class="contact-link">tomaszcyrulikdevelopment@gmail.com</a></p>
-			</div>
-		</div> <!-- /contact-info -->
-	</section> <!-- /contact -->
-
-	<!-- footer
-   ================================================== -->
-	<footer>
-		<div class="row">
-			<div class="col-six tab-full">
-				<div class="copyright">
-					<span>© Copyright Tomasz Cyrulik 2021</span>
-					<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
-				</div>
-			</div>
-
-			<div id="go-top">
-				<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
-			</div>
-
-		</div> <!-- /row -->
-	</footer>
-
-	<div id="preloader">
-		<div id="loader"></div>
-	</div>
-
-	<!-- Java Script
-   ================================================== -->
-	<script src="js/jquery-2.1.3.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/main.js"></script>
-	<script src="js/modal.js"></script>
-	<script src="js/wheelzoom-master/wheelzoom.js"></script>
-	<script src="js/accordion.js"></script>
-	<script src="js/slideshow.js"></script>
-	<script>
-		wheelzoom(document.querySelectorAll("#img01"));
-	</script>
-</body>
-
+		<!-- Java Script
+	================================================== -->
+		<script src="js/jquery-2.1.3.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/modal.js"></script>
+		<script src="js/wheelzoom-master/wheelzoom.js"></script>
+		<script src="js/accordion.js"></script>
+		<script src="js/slideshow.js"></script>
+		<script>
+			wheelzoom(document.querySelectorAll("#img01"));
+		</script>
+	</body>
 </html>
