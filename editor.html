@@ -76,23 +76,23 @@
 					<h3>Project Description</h3>
 
 					<p><a href="https://creativemarket.com/Becris"><img width="120" height="120" class="pull-left" alt="Nodes Icon" src="images/nodes.png"></a>
-						In November 2020, my team and I finished working on a <a href="prototype.html">turn based strategy game prototype</a>, and we wanted to test our other ideas.
-						We started working on a graphic novel game. We wanted to have a tool that would allow us creating
+						In November 2020, my team and I finished working on a <a href="prototype.html">turn-based strategy game prototype</a>, and we wanted to test our other ideas.
+						We started working on a graphic novel game. We wanted to have a tool that would allow us to create
 						content for the game, but also something that would give players a possibility to create their own stories and alter existing ones.
 						That's how we started working on the node-based story editor.
-						In cooperation with game designer, I created a list of requirements which then turned into a design
+						In cooperation with the game designer, I created a list of requirements which then turned into a design
 						document containing all aspects of the editor. The project is still in progress, so not all of the features are implemented yet.
 					</p>
 
 					<p>
-						The editor's data is based on assets. Each element of the story, such as character or a dialog option,
+						The editor's data is based on assets. Each element of the story, such as a character or a dialog option,
 						is an asset of its own type.
 						All assets are stored on the drive in the <code>YAML</code> format providing relatively easy sharing via
 						version control system, such as Git.
 						Additionally, the editor allows creating multiple translations for texts and images.
-						Assets reference each other by IDs, and actual version of the translatable asset can be loaded based on the selected language.
+						Assets reference each other by IDs, and the actual version of the translatable asset can be loaded based on the selected language.
 
-						The core of the editor is the simple nodes system which allows combining all elements together to create a story for the game.
+						The core of the editor is the simple nodes system which allows combining all elements to create a story for the game.
 					</p>
 					<p>
 						Story Editor is created with <strong>C++17</strong> and <a
@@ -103,16 +103,16 @@
 
 					<h3>Architecture</h3>
 					<p>
-						The editor is split into three layers: <strong>Data</strong>, <strong>Bridge</strong> and <strong>UI</strong>
+						The editor is split into three layers: <strong>Data</strong>, <strong>Bridge</strong>, and <strong>UI</strong>
 					</p>
 					<p>
 						The <strong>Data</strong> layer is the 'Brain' of the editor. It contains the assets database which stores all the
-						assets on disk, and contains methods to convert <code>YAML</code> into <code>C++</code> objects.
+						assets on disk and contains methods to convert <code>YAML</code> into <code>C++</code> objects.
 						I wanted to be able to replace the <strong>Data</strong> layer in the future (for example, with a server-based
 						solution), so it only exposes the <code>C</code> API for exchanging data.
-						Creating the <code>C</code> API was a difficult task, because I hadn't created such API before, and there is a lot to
-						keep in mind when dealing with <code>DLL-boundaries</code>.
-						I implemented the API by using entry functions which initialize pointers to interfaces, and then
+						Creating the <code>C</code> API was a difficult task, because I hadn't created such an API before, and there is a lot to
+						keep in mind when dealing with <code>DLL boundaries</code>.
+						I implemented the API by using entry functions that initialize pointers to interfaces and then
 						exchanging data via those interfaces.
 						You can find an example in the code samples <a class="smoothscroll" href="#code-examples">below</a>.
 					</p>
@@ -120,14 +120,14 @@
 						The <strong>Bridge</strong> layer is a connector between <strong>Data</strong> and <strong>UI</strong> layers. It converts <code>C</code> and <code>C++</code> objects
 						back and forth, giving the <strong>UI</strong> layer possibility to deal only with <code>C++</code> objects.
 						And last but not least, the <strong>UI</strong> layer is responsible for displaying the user interface. It takes data via
-						<strong>Bridge</strong> layer and displays it using the <strong>Dear ImGui</strong> library.
+						<strong>the Bridge</strong> layer and displays it using the <strong>Dear ImGui</strong> library.
 						Below, you can find an image showing the general architecture.
 					</p>
 					<p><img class="modal-image" id="myImage" src="images/EditorArchitectureExample.png" alt="EDITOR'S ARCHITECTURE" data-wide=true></p>
 
 					<h3 id="code-examples">Code Examples</h3>
 					<p>
-						Below, you can find a few example of the project's code.
+						Below, you can find a few examples of the project's code.
 						The entire source code is not currently publicly available, so I am including only a couple of examples.
 
 						<!-- Api.h and Api.cpp -->
@@ -139,8 +139,8 @@
 								The actual implementation of these functions is placed inside the <code>Api.cpp</code> file.
 							</p>
 							<p>
-								Once initialized,  the <code>IApi</code> interface provides access to other interfaces, such as <code>IProjectProvider</code> and <code>IProject</code>.
-								Those interfaces are used to create/open project, and to operate on project's data (assets, nodes, etc.).
+								Once initialized, the <code>IApi</code> interface provides access to other interfaces, such as <code>IProjectProvider</code> and <code>IProject</code>.
+								Those interfaces are used to create/open projects, and to operate on projects' data (assets, nodes, etc.).
 							</p>
 							<p>
 								Functions Declarations
@@ -162,12 +162,12 @@
 							<p>
 								This section contains the main components responsible for rendering nodes.<br>
 								
-								The rendering process starts with the <code>NodesViewWindowController</code> class responsible for handling logic of the Nodes View.
-								It updates camera, handles user input and uses renderers to render grid and nodes.
+								The rendering process starts with the <code>NodesViewWindowController</code> class responsible for handling the logic of the Nodes View.
+								It updates the camera, handles user input, and uses renderers to render grid and nodes.
 								<script src="https://gist.github.com/ComaszTyrulik/f222bc78151fa5850738fbe42a5dc763.js"></script>
 							</p>
 							<p>
-								Next, the <code>NodesRenderer</code> class, implementing the <code>INodesRenderer</code> interface, handles rendering of nodes and their transitions.
+								Next, the <code>NodesRenderer</code> class, implementing the <code>INodesRenderer</code> interface, handles the rendering of nodes and their transitions.
 								It uses provided camera and <code>EditorNodeAssets</code> to render only visible nodes. It uses the <code>INodeRenderer</code> interface to issue draw calls for each node and its transitions.
 								Returns list of nodes which are actually visible on the screen, so that the <code>NodesViewWindowController</code> can handle events of only the visible nodes.
 								<script src="https://gist.github.com/ComaszTyrulik/70d6911afe5a718c638b47767dc76755.js"></script>
